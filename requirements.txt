@@ -1,0 +1,2 @@
+flask-application-factory>=0.1
+flask_session>=0.3.1
