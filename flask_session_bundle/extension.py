@@ -1,19 +1,6 @@
-from flask_session import (
-    Session as BaseSession,
-    SqlAlchemySessionInterface as BaseSqlAlchemySessionInterface,
-)
+from flask_session import Session as BaseSession
 
-from .models import Session as SessionModel
-
-
-class SqlAlchemySessionInterface(BaseSqlAlchemySessionInterface):
-    def __init__(self, db, key_prefix, use_signer=False,
-                 permanent=True, model_class=SessionModel):
-        self.db = db
-        self.key_prefix = key_prefix
-        self.use_signer = use_signer
-        self.permanent = permanent
-        self.sql_session_model = model_class
+from .session_interfaces import SqlAlchemySessionInterface
 
 
 class Session(BaseSession):
@@ -21,6 +8,7 @@ class Session(BaseSession):
         if app.config['SESSION_TYPE'] == 'sqlalchemy':
             return SqlAlchemySessionInterface(
                 db=app.config['SESSION_SQLALCHEMY'],
+                table=app.config['SESSION_SQLALCHEMY_TABLE'],
                 key_prefix=app.config['SESSION_KEY_PREFIX'],
                 use_signer=app.config['SESSION_USE_SIGNER'],
                 permanent=app.config['SESSION_PERMANENT'],
