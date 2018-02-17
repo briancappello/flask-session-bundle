@@ -1,6 +1,6 @@
 from flask_session import Session as BaseSession
 
-from .session_interfaces import SqlAlchemySessionInterface
+from ..session_interfaces import SqlAlchemySessionInterface
 
 
 class Session(BaseSession):
@@ -14,11 +14,3 @@ class Session(BaseSession):
                 permanent=app.config['SESSION_PERMANENT'],
                 model_class=app.config['SESSION_SQLALCHEMY_MODEL'])
         return super()._get_interface(app)
-
-
-session = Session()
-
-
-EXTENSIONS = {
-    'session': session,
-}
