@@ -3,8 +3,8 @@ from flask_unchained import AppFactoryHook
 
 
 class RegisterSessionModelHook(AppFactoryHook):
-    priority = 65
     bundle_module_name = None
+    run_after = ['init_extensions', 'models']
 
     def run_hook(self, app: Flask, bundles):
         if app.config.get('SESSION_TYPE') != 'sqlalchemy':
