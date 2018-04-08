@@ -1,2 +1,2 @@
-flask-unchained>=0.1.1
-flask_session>=0.3.1
+flask-session>=0.3.1
+flask-unchained>=0.2.0

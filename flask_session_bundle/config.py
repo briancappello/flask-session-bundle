@@ -4,7 +4,7 @@ except ImportError:
     db = None
 
 
-class BaseConfig:
+class Config:
     SESSION_TYPE = 'null' if db is None else 'sqlalchemy'
     SESSION_KEY_PREFIX = 'session:'
     SESSION_USE_SIGNER = False
@@ -12,19 +12,3 @@ class BaseConfig:
     SESSION_SQLALCHEMY = db
     SESSION_SQLALCHEMY_TABLE = 'flask_sessions'
     SESSION_SQLALCHEMY_MODEL = None
-
-
-class DevConfig(BaseConfig):
-    pass
-
-
-class ProdConfig(BaseConfig):
-    pass
-
-
-class StagingConfig(ProdConfig):
-    pass
-
-
-class TestConfig(BaseConfig):
-    pass
