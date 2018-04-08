@@ -7,7 +7,7 @@ with open('README.md', encoding='utf-8') as f:
 
 setup(
     name='Flask Session Bundle',
-    version='0.1.0',
+    version='0.2.0',
     description='Adds server-side sessions support to Flask Unchained',
     long_description=long_description,
     url='https://github.com/briancappello/flask-session-bundle',
